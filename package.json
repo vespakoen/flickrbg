@@ -1,17 +1,20 @@
 {
   "name": "flickrbg",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Take a random image from a photoset in flickr and set it as the background.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vespakoen/flickrbg.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "babel index.src.js --stage 0 --watch -o index.js"
+    "watch": "babel index.src.js --stage 0 --watch -o index.js",
+    "start": "node index.js | sh"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Koen Schmeets",
+  "license": "MIT",
   "dependencies": {
-    "flickr": "^0.2.0",
-    "flickrapi": "^0.3.36",
     "lodash.random": "^3.0.1",
     "node-fetch": "^1.3.2",
     "xml2js": "^0.4.12"
