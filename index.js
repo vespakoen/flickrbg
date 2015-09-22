@@ -29,7 +29,7 @@ function parseXML(xml) {
   return parseXML(body);
 }).then(function (json) {
   setInterval(function () {
-    var randomPicIndex = (0, _lodashRandom2['default'])(0, json.rsp.photoset[0].photo.length);
+    var randomPicIndex = (0, _lodashRandom2['default'])(0, json.rsp.photoset[0].photo.length - 1);
     var randomPic = json.rsp.photoset[0].photo[randomPicIndex].$;
     return (0, _nodeFetch2['default'])('https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=31e2c7e110ca8b9845bd8e5cc56ea584&photo_id=' + randomPic.id).then(function (res) {
       return res.text();
@@ -39,5 +39,5 @@ function parseXML(xml) {
       var sizes = json.rsp.sizes[0].size;
       console.log('feh --bg-scale ' + sizes[sizes.length - 1].$.source);
     });
-  }, 1000 * 5);
+  }, 1000 * 60 * 5);
 });

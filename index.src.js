@@ -16,7 +16,7 @@ fetch('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&a
   .then((body) => parseXML(body))
   .then((json) => {
     setInterval(() => {
-      var randomPicIndex = random(0, json.rsp.photoset[0].photo.length);
+      var randomPicIndex = random(0, json.rsp.photoset[0].photo.length - 1);
       var randomPic = json.rsp.photoset[0].photo[randomPicIndex].$;
       return fetch('https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=31e2c7e110ca8b9845bd8e5cc56ea584&photo_id=' + randomPic.id)
         .then((res) => res.text())
@@ -25,5 +25,5 @@ fetch('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&a
             var sizes = json.rsp.sizes[0].size;
             console.log('feh --bg-scale ' + sizes[sizes.length - 1].$.source);
         });
-    }, 1000 * 5);
+    }, 1000 * 60 * 5);
   });
